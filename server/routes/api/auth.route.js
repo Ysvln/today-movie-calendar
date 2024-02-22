@@ -39,7 +39,7 @@ authRouter.get(
 
     res.cookie("token", token, { httpOnly: true, maxAge: 86400000 });
     res.cookie("isUser", 1, { maxAge: 86400000 });
-    res.redirect("http://localhost:3000/calendar");
+    res.redirect("http://localhost:80/calendar");
   }
 );
 

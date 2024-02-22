@@ -7,7 +7,7 @@ const backUrl = "https://54.180.114.71";
 export default defineConfig({
   plugins: [react(), tsconfigPaths()],
   server: {
-    port: 3000,
+    port: 80,
     open: true,
     proxy: {
       "/api": {
