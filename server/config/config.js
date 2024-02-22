@@ -20,7 +20,7 @@ module.exports = {
     username: "root",
     password: process.env.DB_PASSWORD,
     database: "database_production",
-    host: "127.0.0.1",
+    host: "port-0-today-movie-17xco2nlsxfe2il.sel5.cloudtype.app",
     dialect: "mysql",
   },
 };
