@@ -20,7 +20,7 @@ module.exports = {
     username: "root",
     password: process.env.DB_PASSWORD,
     database: "database_production",
-    host: "34.22.82.211",
+    host: "127.0.0.1",
     dialect: "mysql",
   },
 };
