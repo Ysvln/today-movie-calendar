@@ -40,7 +40,12 @@ if (process.env.NODE_ENV === "production") {
 
 app.use(
   cors({
-    origin: ["http://localhost:3000", "todaymovie.com", "http://54.180.120.78"],
+    origin: [
+      "http://localhost:3000",
+      "todaymovie.com",
+      "http://54.180.120.78",
+      "https://today-movie.vercel.app",
+    ],
     credentials: true,
   })
 );
