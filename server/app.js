@@ -44,7 +44,7 @@ app.use(
       "http://localhost:3000",
       "todaymovie.com",
       "http://54.180.109.24",
-      "https://today-movie-calendar.vercel.app/",
+      "https://today-movie-calendar.vercel.app",
     ],
     credentials: true,
   })
