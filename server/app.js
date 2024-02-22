@@ -40,7 +40,7 @@ if (process.env.NODE_ENV === "production") {
 
 app.use(
   cors({
-    origin: ["http://localhost:3000", "todaymovie.com", "http://54.180.109.24"],
+    origin: ["http://localhost:3000", "todaymovie.com", "http://13.125.210.7"],
     credentials: true,
   })
 );
