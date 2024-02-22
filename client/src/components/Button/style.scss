@@ -1,0 +1,58 @@
+@import "../../styles/index.scss";
+
+.button {
+  width: 100%;
+  padding: 13px;
+  border-radius: 4px;
+  font-size: $fz-sm;
+  font-weight: $fw-semiBold;
+  @include flex-center;
+  cursor: pointer;
+
+  span {
+    font-weight: $fw-extraBold;
+  }
+
+  .icon {
+    margin-left: auto;
+  }
+
+  &.disabled {
+    background-color: $gray-200;
+    color: $gray-400;
+    cursor: auto;
+  }
+
+  &__primary {
+    background-color: $primary;
+    color: $white;
+  }
+
+  &__secondary {
+    border: 1px solid $primary;
+    background-color: $white;
+    color: $primary;
+  }
+
+  &__kakao {
+    background-color: $kakao;
+    color: $black;
+  }
+
+  &__white {
+    border: 1px solid $gray-200;
+    background-color: $white;
+    color: $black;
+  }
+
+  &__gray {
+    border: 1px solid $gray-200;
+    background-color: $gray-200;
+    color: $gray-500;
+  }
+
+  &__sub {
+    background-color: $purple-100;
+    color: $primary;
+  }
+}

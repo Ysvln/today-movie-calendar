@@ -1,0 +1,28 @@
+@import "../../styles/index.scss";
+
+.label {
+  display: block;
+  font-weight: $fw-regular;
+  font-size: $fz-sm;
+  margin-bottom: 8px;
+}
+
+.input__container {
+  position: relative;
+}
+
+.input {
+  width: 100%;
+  border: 1px solid $gray-300;
+  padding: 13px 70px 13px 8px;
+  border-radius: 4px;
+
+  &.error {
+    border-color: $primary;
+  }
+
+  &:focus {
+    border-color: $primary;
+    outline: none;
+  }
+}

@@ -1,0 +1,28 @@
+@import "../../../styles/index.scss";
+
+.movie-comment-modal {
+  &__content {
+    @include flex-column;
+    gap: 16px;
+  }
+  &__label {
+    display: block;
+    font-weight: $fw-semiBold;
+    font-size: $fz-sm;
+  }
+  &__textarea {
+    padding: 16px;
+    resize: none;
+    height: 250px;
+    border-radius: 5px;
+    border: 1px solid $gray-200;
+
+    &:focus {
+      outline: 1px solid $primary;
+    }
+  }
+}
+
+.button__wrapper {
+  margin-top: 24px;
+}

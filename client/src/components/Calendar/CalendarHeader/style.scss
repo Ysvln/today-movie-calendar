@@ -1,0 +1,14 @@
+@import "../../../styles/index.scss";
+
+.calendar-header {
+  @include flex-center;
+  gap: 8px;
+
+  &__arrow {
+    cursor: pointer;
+  }
+
+  &__title {
+    font-weight: $fw-bold;
+  }
+}

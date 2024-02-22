@@ -1,0 +1,8 @@
+@import "../../../../styles/index.scss";
+
+.my-content {
+  &__actions {
+    @include flex-column;
+    gap: 8px;
+  }
+}

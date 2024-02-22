@@ -1,0 +1,9 @@
+@import "../../../styles/index.scss";
+
+.my-content {
+  height: 100%;
+  @include flex-column;
+  justify-content: center;
+  gap: 24px;
+  padding: 0 24px;
+}

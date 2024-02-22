@@ -1,0 +1,11 @@
+@import "../../styles/index.scss";
+
+.error {
+  display: block;
+  margin: 8px 0;
+  font-size: $fz-xs;
+
+  &__primary {
+    color: $primary;
+  }
+}

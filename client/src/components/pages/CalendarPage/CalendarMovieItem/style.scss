@@ -1,0 +1,39 @@
+@import "../../../../styles/index.scss";
+
+.calendar-movie-item {
+  width: fit-content;
+  padding: 3px 12px;
+  border-radius: 15px;
+  background-color: $black;
+  @include flex-center;
+  gap: 5px;
+  margin-bottom: 8px;
+
+  &__title {
+    color: white;
+    font-size: $fz-sm;
+    font-weight: $fw-medium;
+  }
+
+  &__list {
+    @include flex-column;
+    gap: 8px;
+
+    &-item {
+      padding: 5px;
+      border-radius: 4px;
+
+      a {
+        @include flex-space-between-center;
+      }
+
+      p {
+        font-size: $fz-sm;
+        font-weight: $fw-semiBold;
+      }
+      &.empty {
+        font-size: $fz-sm;
+      }
+    }
+  }
+}

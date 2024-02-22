@@ -1,0 +1,26 @@
+@import "../../../styles/index.scss";
+
+.movie-rating-modal {
+  &__content {
+    @include flex-column;
+    gap: 16px;
+  }
+  &__label {
+    display: block;
+    font-weight: $fw-semiBold;
+    font-size: $fz-sm;
+  }
+  &__item {
+    @include flex-space-between-center;
+  }
+  &__stars {
+    @include flex-space-between-center;
+    div {
+      cursor: pointer;
+    }
+  }
+}
+
+.button__wrapper {
+  margin-top: 24px;
+}

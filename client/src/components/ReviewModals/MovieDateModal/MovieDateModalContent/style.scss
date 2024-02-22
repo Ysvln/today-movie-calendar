@@ -1,0 +1,17 @@
+@import "../../../../styles/index.scss";
+
+.movie-date-modal {
+  &__content {
+    @include flex-space-between-center;
+    position: relative;
+  }
+  &__label {
+    display: block;
+    font-weight: $fw-semiBold;
+    font-size: $fz-sm;
+  }
+}
+
+.button__wrapper {
+  margin-top: 24px;
+}

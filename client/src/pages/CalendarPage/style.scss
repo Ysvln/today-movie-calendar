@@ -1,0 +1,9 @@
+@import "../../styles/index.scss";
+
+.calendar-page {
+  padding: 24px 12px 160px;
+
+  .calendar-body__content > tr {
+    height: 70px;
+  }
+}

@@ -1,0 +1,9 @@
+@import "../../../../styles/index.scss";
+
+.my-content {
+  &__review-list {
+    @include flex-column;
+    gap: 8px;
+    margin-bottom: 30px;
+  }
+}

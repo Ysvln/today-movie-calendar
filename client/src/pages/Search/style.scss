@@ -1,0 +1,25 @@
+@import "../../styles/index.scss";
+
+.search {
+  padding: 84px 24px 100px;
+  @include flex-column;
+  justify-content: center;
+  gap: 32px;
+
+  &__input-wrapper {
+    @include flex-center;
+    gap: 8px;
+    input {
+      width: 290px;
+      padding: 13px 8px;
+    }
+  }
+
+  &__results {
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

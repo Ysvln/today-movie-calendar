@@ -1,0 +1,40 @@
+@import "../../styles/index.scss";
+
+.login {
+  @include flex-center;
+  flex-direction: column;
+  height: 100vh;
+  padding: 0 24px;
+
+  &__title {
+    font-size: $fz-lg;
+    font-weight: $fw-bold;
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  &__form {
+    width: 100%;
+    @include flex-column;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  &__button-group {
+    margin-top: 64px;
+    @include flex-column;
+    gap: 8px;
+  }
+
+  &__signup-link {
+    margin-top: 24px;
+    text-align: center;
+    font-size: $fz-xs;
+    color: $gray-500;
+
+    a {
+      font-weight: $fw-medium;
+      color: $primary;
+    }
+  }
+}

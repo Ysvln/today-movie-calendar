@@ -1,0 +1,10 @@
+@import "../../styles/index.scss";
+
+.timer {
+  width: fit-content;
+  &__content {
+    color: $primary;
+    font-size: $fz-sm;
+    font-weight: $fw-medium;
+  }
+}

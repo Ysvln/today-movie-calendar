@@ -1,0 +1,33 @@
+@import "../../styles/index.scss";
+
+.modal {
+  @include modal-background;
+
+  &__container {
+    @include position-center;
+    min-width: 360px;
+    max-width: 430px;
+    background-color: #fff;
+    border-radius: 10px;
+  }
+
+  &__header {
+    @include flex-center;
+    padding: 14px 22px;
+    border-bottom: 1px solid $gray-300;
+  }
+
+  &__title {
+    margin: auto;
+    font-size: $fz-md;
+    font-weight: $fw-bold;
+  }
+
+  &__close-button {
+    cursor: pointer;
+  }
+
+  &__content {
+    padding: 24px;
+  }
+}

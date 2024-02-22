@@ -1,0 +1,33 @@
+@import "../../styles/index.scss";
+
+.not-found {
+  height: 100vh;
+  @include flex-column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+
+  &__image {
+    width: 150px;
+
+    > img {
+      width: 100%;
+    }
+  }
+
+  &__content {
+    text-align: center;
+  }
+
+  &__title {
+    font-size: $fz-lg;
+    font-weight: $fw-bold;
+    margin-bottom: 4px;
+  }
+
+  &__message {
+    font-size: $fz-md;
+    font-weight: $fw-regular;
+    margin-bottom: 24px;
+  }
+}

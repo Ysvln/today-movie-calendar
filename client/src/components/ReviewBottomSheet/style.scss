@@ -1,0 +1,75 @@
+@import "../../styles/index.scss";
+
+.review-bottom-sheet {
+  @include modal-background;
+
+  &__container {
+    width: 430px;
+
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0);
+    -moz-transform: translate(-50%, 0);
+    -o-transform: translate(-50%, 0);
+    transform: translate(-50%, 0%);
+
+    animation: fadeInUp 0.3s;
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translate(-50%, 100%);
+      }
+      to {
+        opacity: 1;
+        transform: translate(-50%, 0%);
+      }
+    }
+
+    @include flex-column;
+    gap: 24px;
+
+    background-color: $white;
+    padding: 40px 24px;
+    border-radius: 15px 15px 0 0;
+  }
+
+  &__header {
+  }
+
+  &__title {
+    text-align: center;
+    font-size: $fz-md;
+    font-weight: $fw-bold;
+  }
+
+  &__content {
+    padding-top: 8px;
+    @include flex-center;
+    gap: 8px;
+  }
+
+  &__item {
+    flex: 1;
+    padding: 16px 0;
+    border-radius: 5px;
+    background-color: #fafafa;
+    cursor: pointer;
+
+    @include flex-column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__icon {
+    width: 21px;
+    height: 19px;
+  }
+
+  &__text {
+    font-size: $fz-sm;
+    font-weight: $fw-medium;
+    color: $gray-500;
+  }
+}

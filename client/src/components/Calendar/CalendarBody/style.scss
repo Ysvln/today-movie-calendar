@@ -1,0 +1,14 @@
+@import "../../../styles/index.scss";
+
+.calendar-container {
+  border-radius: 10px;
+  padding: 5px;
+  background-color: #fff;
+
+  &-content {
+  }
+
+  &-item-wrapper {
+    margin: 32px 0 16px;
+  }
+}

@@ -1,0 +1,31 @@
+@import "../../../styles";
+
+.header {
+  position: fixed;
+  z-index: 5;
+  transition: all ease 0.3s;
+  width: 430px;
+  padding: 16px 0;
+  background-color: $white;
+  border-bottom: 1px solid $gray-300;
+
+  &__title {
+    text-align: center;
+    font-size: $fz-md;
+    font-weight: $fw-bold;
+  }
+
+  &__back-button {
+    width: 19px;
+    height: 19px;
+    cursor: pointer;
+    position: absolute;
+    left: 24px;
+    top: 18px;
+    background: none;
+  }
+}
+
+.hidden {
+  opacity: 0;
+}

@@ -1,0 +1,90 @@
+//size
+$fz-xs: 12px;
+$fz-sm: 14px;
+$fz-md: 16px;
+$fz-lg: 24px;
+$fz-xl: 30px;
+
+//weight
+$fw-thin: 100;
+$fw-extraLight: 200;
+$fw-light: 300;
+$fw-regular: 400;
+$fw-medium: 500;
+$fw-semiBold: 600;
+$fw-bold: 700;
+$fw-extraBold: 800;
+$fw-black: 900;
+
+//face
+@font-face {
+  font-family: "Pretendard";
+  src: url("/assets/font/woff2/Pretendard-Thin.woff2") format("woff2"),
+    url("/assets/font/woff/Pretendard-Thin.woff") format("woff");
+  font-weight: $fw-thin;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pretendard";
+  src: url("/assets/fonts/Pretendard-ExtraLight.woff2") format("woff2"),
+    url("/assets/font/woff/Pretendard-ExtraLight.woff") format("woff");
+  font-weight: $fw-extraLight;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pretendard";
+  src: url("/assets/fonts/woff2/Pretendard-Light.woff2") format("woff2"),
+    url("/assets/font/woff/Pretendard-Light.woff") format("woff");
+  font-weight: $fw-light;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pretendard";
+  src: url("/assets/fonts/woff2/Pretendard-Regular.woff2") format("woff2"),
+    url("/assets/font/woff/Pretendard-Regular.woff") format("woff");
+  font-weight: $fw-regular;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pretendard";
+  src: url("/assets/fonts/woff2/Pretendard-Medium.woff2") format("woff2"),
+    url("/assets/font/woff/Pretendard-Medium.woff") format("woff");
+  font-weight: $fw-medium;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pretendard";
+  src: url("/assets/fonts/woff2/Pretendard-SemiBold.woff2") format("woff2"),
+    url("/assets/font/woff/Pretendard-SemiBold.woff") format("woff");
+  font-weight: $fw-semiBold;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pretendard";
+  src: url("/assets/fonts/woff2/Pretendard-Bold.woff2") format("woff2"),
+    url("/assets/font/woff/Pretendard-Bold.woff") format("woff");
+  font-weight: $fw-bold;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pretendard";
+  src: url("/assets/fonts/woff2/Pretendard-ExtraBold.woff2") format("woff2"),
+    url("/assets/font/woff/Pretendard-ExtraBold.woff") format("woff");
+  font-weight: $fw-extraBold;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pretendard";
+  src: url("/assets/fonts/woff2/Pretendard-Black.woff2") format("woff2"),
+    url("/assets/font/woff/Pretendard-Black.woff") format("woff");
+  font-weight: $fw-black;
+  font-display: swap;
+}

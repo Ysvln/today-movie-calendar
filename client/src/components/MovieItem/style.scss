@@ -1,0 +1,62 @@
+@import "../../styles/index.scss";
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.search {
+  &__item {
+    cursor: pointer;
+    width: 122px;
+    height: 207px;
+    @include flex-column;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 16px;
+
+    animation-name: fadeIn;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+  }
+
+  &__poster {
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 3/4;
+  }
+
+  &__info {
+    height: 35px;
+  }
+
+  &__title {
+    font-size: $fz-md;
+    font-weight: $fw-semiBold;
+    margin-bottom: 3px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__description {
+    font-size: $fz-sm;
+    line-height: 1.2;
+    color: #666;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__empty {
+    padding: 50px;
+    color: $gray-400;
+    font-weight: $fw-regular;
+    text-align: center;
+  }
+}
