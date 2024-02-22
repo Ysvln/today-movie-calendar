@@ -10,7 +10,8 @@ export default defineConfig({
     open: true,
     proxy: {
       "/api": {
-        target: "http://54.180.114.71",
+        target:
+          "https://port-0-today-movie-17xco2nlsxfe2il.sel5.cloudtype.app/",
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ""),
       },
