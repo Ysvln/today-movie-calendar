@@ -6,12 +6,12 @@ import tsconfigPaths from "vite-tsconfig-paths";
 export default defineConfig({
   plugins: [react(), tsconfigPaths()],
   server: {
-    port: 80,
+    port: 3000,
     open: true,
     host: true,
     proxy: {
       "/api": {
-        target: "http://http://54.180.114.71/",
+        target: "http://localhost:4000",
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ""),
       },
