@@ -17,7 +17,7 @@ dotenv.config({ path: path.join(__dirname, "/.env") }); // process.env
 const passportConfig = require("./passport");
 const app = express();
 passportConfig();
-app.set("port", process.env.PORT || 4000);
+app.set("port", process.env.PORT || 80);
 
 // sequelize
 //   .sync({force : true}) => 개발용! 테이블 잘못 만들었을 때 설정하고 서버 재시작하면, 테이블 다 제거
