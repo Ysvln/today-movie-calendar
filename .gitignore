@@ -21,4 +21,4 @@ nginx.conf
 *.sln
 *.sw?
 
-today-movie.pem
+today-movie-aws.pem
