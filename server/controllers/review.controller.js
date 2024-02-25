@@ -58,16 +58,18 @@ const patchReview = async (req, res, next) => {
     }
 
     if (watchedAt) {
-      // 관람일이 주어진 경우 15시간을 더하여 UTC로 저장
-      const modifiedWatchedAt = new Date(watchedAt);
-      modifiedWatchedAt.setHours(modifiedWatchedAt.getHours() + 15);
-      review.watchedAt = modifiedWatchedAt
-        .toISOString()
-        .slice(0, 19)
-        .replace("T", " ");
-    } else {
-      // 관람일이 주어지지 않은 경우 기존 값 유지
-      review.watchedAt = review.watchedAt;
+      const newWatchedAt = new Date(watchedAt);
+      // 기존 관람일이 없거나 주어진 관람일이 기존 값과 다른 경우에만 15시간을 추가하여 저장
+      if (
+        !review.watchedAt ||
+        newWatchedAt.getTime() !== review.watchedAt.getTime()
+      ) {
+        newWatchedAt.setHours(newWatchedAt.getHours() + 15);
+        review.watchedAt = newWatchedAt
+          .toISOString()
+          .slice(0, 19)
+          .replace("T", " ");
+      }
     }
 
     // rating이 주어진 경우 업데이트
