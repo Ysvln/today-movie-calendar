@@ -67,7 +67,10 @@ const getMoviesAndUserWatchedMoviesByDate = async (req, res, next) => {
     const userWatchedMovies = await Review.findAll({
       where: {
         UserId: userId,
-        watchedAt: newDate,
+        watchedAt: {
+          [Op.gte]: new Date(newDate.toDateString()),
+          [Op.lt]: new Date(newDate.toDateString() + " 23:59:59"),
+        },
       },
       include: [
         {
