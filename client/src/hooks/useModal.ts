@@ -5,11 +5,13 @@ const useModal = () => {
 
   const openModal = (name: string) => {
     document.body.style.overflowY = "hidden";
+    document.body.style.touchAction = "none";
     setActiveModal(name);
   };
 
   const closeModal = () => {
     document.body.style.overflowY = "auto";
+    document.body.style.touchAction = "auto";
     setActiveModal(null);
   };
 
