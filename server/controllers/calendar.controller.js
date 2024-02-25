@@ -55,9 +55,13 @@ const getMoviesAndUserWatchedMoviesByDate = async (req, res, next) => {
 
   try {
     const newDate = new Date(date);
-    const startDate = new Date(`${date}T00:00:00+09:00`);
-    const endDate = new Date(startDate);
+    const utcDate = new Date(date).toISOString().split("T")[0];
+
+    const startDate = new Date(utcDate);
+    startDate.setHours(0, 0, 0, 0);
+    const endDate = new Date(utcDate);
     endDate.setDate(endDate.getDate() + 1);
+    endDate.setHours(0, 0, 0, 0);
 
     const moviesReleasedOnDate = await Movie.findAll({
       where: {
