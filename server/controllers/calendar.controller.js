@@ -52,14 +52,18 @@ const getMoviesAndUserWatchedMovies = async (req, res, next) => {
 const getMoviesAndUserWatchedMoviesByDate = async (req, res, next) => {
   const { date } = req.params;
   const userId = req.user.id;
-  const newDate = new Date(date);
-  console.log(date, "DATE");
-  console.log(newDate, "newDate");
-  newDate.setHours(0, 0, 0, 0);
+
   try {
+    const startDate = new Date(date);
+    startDate.setHours(0, 0, 0, 0); // 날짜의 시작 시간으로 설정
+
+    const endDate = new Date(date);
+    endDate.setDate(endDate.getDate() + 1); // 다음 날의 시작 시간으로 설정
+    endDate.setHours(0, 0, 0, 0);
+
     const moviesReleasedOnDate = await Movie.findAll({
       where: {
-        releaseDate: newDate,
+        releaseDate: startDate,
       },
       attributes: ["id", "title", "releaseDate"],
     });
@@ -69,16 +73,8 @@ const getMoviesAndUserWatchedMoviesByDate = async (req, res, next) => {
       where: {
         UserId: userId,
         watchedAt: {
-          [Op.gte]: new Date(
-            newDate.getFullYear(),
-            newDate.getMonth(),
-            newDate.getDate()
-          ),
-          [Op.lt]: new Date(
-            newDate.getFullYear(),
-            newDate.getMonth(),
-            newDate.getDate() + 1
-          ),
+          [Op.gte]: startDate,
+          [Op.lt]: endDate,
         },
       },
       include: [
