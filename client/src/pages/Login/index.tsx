@@ -26,7 +26,7 @@ function Login() {
 
   // 카카오 로그인
   const handleKakaoLogin = () => {
-    window.location.href = "http://todaymovie.site:4080/api/auth/kakao";
+    window.location.href = "http://todaymovie.site:4000/api/auth/kakao";
   };
 
   return (
