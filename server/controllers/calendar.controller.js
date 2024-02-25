@@ -1,6 +1,6 @@
 const Movie = require("../models/movie.model");
 const Review = require("../models/review.model");
-const { Op } = require("sequelize");
+const { Op, literal } = require("sequelize");
 
 // 해당하는 연, 월에 개봉하는 영화 및 유저가 관람한 영화 목록 반환
 const getMoviesAndUserWatchedMovies = async (req, res, next) => {
@@ -29,8 +29,12 @@ const getMoviesAndUserWatchedMovies = async (req, res, next) => {
       where: {
         UserId: userId,
         watchedAt: {
-          [Op.gte]: startDate,
-          [Op.lt]: endDate,
+          [Op.and]: [
+            literal(
+              `DATE(watchedAt) = '${newDate.toISOString().split("T")[0]}'`
+            ),
+            literal(`HOUR(watchedAt) = 0`), // 시간 정보를 제외한 후에 비교
+          ],
         },
       },
       include: [
