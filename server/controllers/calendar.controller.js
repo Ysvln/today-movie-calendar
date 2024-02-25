@@ -69,8 +69,16 @@ const getMoviesAndUserWatchedMoviesByDate = async (req, res, next) => {
       where: {
         UserId: userId,
         watchedAt: {
-          [Op.gte]: newDate, // 해당 날짜보다 같거나 나중
-          [Op.lt]: new Date(newDate.getTime() + 24 * 60 * 60 * 1000), // 다음 날
+          [Op.gte]: new Date(
+            newDate.getFullYear(),
+            newDate.getMonth(),
+            newDate.getDate()
+          ),
+          [Op.lt]: new Date(
+            newDate.getFullYear(),
+            newDate.getMonth(),
+            newDate.getDate() + 1
+          ),
         },
       },
       include: [
