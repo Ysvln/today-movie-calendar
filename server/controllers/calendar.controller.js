@@ -51,8 +51,10 @@ const getMoviesAndUserWatchedMovies = async (req, res, next) => {
 
 const getMoviesAndUserWatchedMoviesByDate = async (req, res, next) => {
   const { date } = req.params;
+  console.log(date, "DATE");
   const userId = req.user.id;
   const newDate = new Date(date);
+  console.log(newDate, "newDate");
   try {
     const moviesReleasedOnDate = await Movie.findAll({
       where: {
