@@ -8,10 +8,12 @@ export const useToggle = (initialState: boolean) => {
   };
 
   const open = () => {
+    document.body.style.overflowY = "hidden";
     setIsOpen(true);
   };
 
   const close = () => {
+    document.body.style.overflowY = "auto";
     setIsOpen(false);
   };
 
