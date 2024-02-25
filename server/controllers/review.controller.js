@@ -8,7 +8,16 @@ const postReview = async (req, res, next) => {
     const userId = req.user.id;
     const movieId = req.params.movieId;
     const { rating, content } = req.body;
-    const today = new Date();
+
+    // 사용자가 입력한 날짜 및 시간을 로컬 시간대의 Date 객체로 생성
+    const userLocalDateTime = new Date();
+
+    // 로컬 시간대의 날짜와 시간을 UTC로 변환하여 저장
+    const watchedAtUTC = new Date(
+      userLocalDateTime.getTime() +
+        userLocalDateTime.getTimezoneOffset() * 60000
+    );
+
     const existingReview = await Review.findOne({
       where: { UserId: userId, MovieId: movieId },
     });
@@ -17,7 +26,7 @@ const postReview = async (req, res, next) => {
     }
 
     const review = await Review.create({
-      watchedAt: today.toISOString().slice(0, 19).replace("T", " "),
+      watchedAt: watchedAtUTC.toISOString().slice(0, 19).replace("T", " "),
       rating,
       content,
       UserId: userId,
