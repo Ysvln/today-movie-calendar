@@ -85,6 +85,8 @@ const getMoviesAndUserWatchedMoviesByDate = async (req, res, next) => {
         },
       ],
     });
+
+    console.log("userWatchedMovies************", userWatchedMovies);
     const userWatchedMoviesInDate = userWatchedMovies.map((movie) => ({
       id: movie.Movie.id,
       title: movie.Movie.title,
