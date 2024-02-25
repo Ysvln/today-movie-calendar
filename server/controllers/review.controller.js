@@ -58,12 +58,16 @@ const patchReview = async (req, res, next) => {
     }
 
     if (watchedAt) {
+      // 관람일이 주어진 경우 15시간을 더하여 UTC로 저장
       const modifiedWatchedAt = new Date(watchedAt);
       modifiedWatchedAt.setHours(modifiedWatchedAt.getHours() + 15);
       review.watchedAt = modifiedWatchedAt
         .toISOString()
         .slice(0, 19)
         .replace("T", " ");
+    } else {
+      // 관람일이 주어지지 않은 경우 기존 값 유지
+      review.watchedAt = review.watchedAt;
     }
 
     // rating이 주어진 경우 업데이트
