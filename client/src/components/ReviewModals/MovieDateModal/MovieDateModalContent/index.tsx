@@ -38,7 +38,7 @@ const MovieDateModalContent = ({ closeModal }: MovieDateModalContentProps) => {
           const response = await reviewApi.updateReview(MovieId, data);
           setReview({ ...review, ...response });
         }
-        alert(MESSAGE.REVIEW.COMPLETE);
+        alert(MESSAGE.DATE.COMPLETE);
         closeModal();
       } catch (error) {
         alert(MESSAGE.ERROR.DEFAULT);
