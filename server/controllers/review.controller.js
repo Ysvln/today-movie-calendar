@@ -57,9 +57,18 @@ const patchReview = async (req, res, next) => {
       return res.status(404).json({ message: "해당하는 리뷰가 없습니다." });
     }
 
-    //?
-    review.watchedAt = watchedAt || review.watchedAt;
+    if (watchedAt) {
+      const modifiedWatchedAt = new Date(watchedAt);
+      modifiedWatchedAt.setHours(modifiedWatchedAt.getHours() + 15);
+      review.watchedAt = modifiedWatchedAt
+        .toISOString()
+        .slice(0, 19)
+        .replace("T", " ");
+    }
+
+    // rating이 주어진 경우 업데이트
     review.rating = rating || review.rating;
+    // content가 주어진 경우 업데이트
     review.content = content || review.content;
 
     await review.save();
