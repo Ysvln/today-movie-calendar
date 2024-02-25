@@ -11,7 +11,7 @@ export default defineConfig({
     host: true,
     proxy: {
       "/api": {
-        target: "http://todaymovie.site",
+        target: "http://todaymovie.site:4000",
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ""),
       },
