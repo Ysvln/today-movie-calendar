@@ -61,6 +61,8 @@ const getMoviesAndUserWatchedMoviesByDate = async (req, res, next) => {
     endDate.setDate(endDate.getDate() + 1); // 다음 날의 시작 시간으로 설정
     endDate.setHours(0, 0, 0, 0);
 
+    console.log(startDate, endDate, "여기!!");
+
     const moviesReleasedOnDate = await Movie.findAll({
       where: {
         releaseDate: startDate,
