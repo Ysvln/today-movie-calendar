@@ -17,7 +17,7 @@ const postReview = async (req, res, next) => {
     }
 
     const review = await Review.create({
-      watchedAt: today,
+      watchedAt: today.toISOString().slice(0, 19).replace("T", " "),
       rating,
       content,
       UserId: userId,
