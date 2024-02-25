@@ -29,12 +29,8 @@ const getMoviesAndUserWatchedMovies = async (req, res, next) => {
       where: {
         UserId: userId,
         watchedAt: {
-          [Op.and]: [
-            literal(
-              `DATE(watchedAt) = '${newDate.toISOString().split("T")[0]}'`
-            ),
-            literal(`HOUR(watchedAt) = 0`), // 시간 정보를 제외한 후에 비교
-          ],
+          [Op.gte]: startDate,
+          [Op.lt]: endDate,
         },
       },
       include: [
@@ -55,9 +51,9 @@ const getMoviesAndUserWatchedMovies = async (req, res, next) => {
 
 const getMoviesAndUserWatchedMoviesByDate = async (req, res, next) => {
   const { date } = req.params;
-  console.log(date, "DATE");
   const userId = req.user.id;
   const newDate = new Date(date);
+  console.log(date, "DATE");
   console.log(newDate, "newDate");
   try {
     const moviesReleasedOnDate = await Movie.findAll({
@@ -72,8 +68,12 @@ const getMoviesAndUserWatchedMoviesByDate = async (req, res, next) => {
       where: {
         UserId: userId,
         watchedAt: {
-          [Op.gte]: new Date(newDate.toDateString()),
-          [Op.lt]: new Date(newDate.toDateString() + " 23:59:59"),
+          [Op.and]: [
+            literal(
+              `DATE(watchedAt) = '${newDate.toISOString().split("T")[0]}'`
+            ),
+            literal(`HOUR(watchedAt) = 0`), // 시간 정보를 제외한 후에 비교
+          ],
         },
       },
       include: [
