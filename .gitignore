@@ -20,6 +20,5 @@ nginx.conf
 *.njsproj
 *.sln
 *.sw?
-nginx.conf
 
 today-movie-aws.pem
