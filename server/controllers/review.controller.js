@@ -8,7 +8,10 @@ const postReview = async (req, res, next) => {
     const userId = req.user.id;
     const movieId = req.params.movieId;
     const { rating, content } = req.body;
-    const today = new Date();
+
+    const watchedAt = new Date();
+    watchedAt.setHours(watchedAt.getHours() + 15);
+
     const existingReview = await Review.findOne({
       where: { UserId: userId, MovieId: movieId },
     });
@@ -17,7 +20,7 @@ const postReview = async (req, res, next) => {
     }
 
     const review = await Review.create({
-      watchedAt: today,
+      watchedAt: watchedAt.toISOString().slice(0, 19).replace("T", " "),
       rating,
       content,
       UserId: userId,
@@ -54,9 +57,24 @@ const patchReview = async (req, res, next) => {
       return res.status(404).json({ message: "해당하는 리뷰가 없습니다." });
     }
 
-    //?
-    review.watchedAt = watchedAt || review.watchedAt;
+    if (watchedAt) {
+      const newWatchedAt = new Date(watchedAt);
+      // 기존 관람일이 없거나 주어진 관람일이 기존 값과 다른 경우에만 15시간을 추가하여 저장
+      if (
+        !review.watchedAt ||
+        newWatchedAt.getTime() !== review.watchedAt.getTime()
+      ) {
+        newWatchedAt.setHours(newWatchedAt.getHours() + 15);
+        review.watchedAt = newWatchedAt
+          .toISOString()
+          .slice(0, 19)
+          .replace("T", " ");
+      }
+    }
+
+    // rating이 주어진 경우 업데이트
     review.rating = rating || review.rating;
+    // content가 주어진 경우 업데이트
     review.content = content || review.content;
 
     await review.save();

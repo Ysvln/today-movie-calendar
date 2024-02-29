@@ -15,17 +15,16 @@ const defaultUserInfo: UserInfo = {
 
 const useCheckUserInfo = () => {
   const [user, setUser] = useState(defaultUserInfo);
+  const checkUser = async () => {
+    try {
+      const userInfo = await userApi.getUserInfo();
+      setUser(userInfo);
+    } catch (err) {
+      alert(MESSAGE.ERROR.DEFAULT);
+    }
+  };
 
   useEffect(() => {
-    const checkUser = async () => {
-      try {
-        const userInfo = await userApi.getUserInfo();
-        setUser(userInfo);
-      } catch (err) {
-        alert(MESSAGE.ERROR.DEFAULT);
-      }
-    };
-
     checkUser();
   }, []);
 

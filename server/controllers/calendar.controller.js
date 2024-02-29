@@ -1,6 +1,6 @@
 const Movie = require("../models/movie.model");
 const Review = require("../models/review.model");
-const { Op } = require("sequelize");
+const { Op, literal } = require("sequelize");
 
 // 해당하는 연, 월에 개봉하는 영화 및 유저가 관람한 영화 목록 반환
 const getMoviesAndUserWatchedMovies = async (req, res, next) => {
@@ -52,8 +52,17 @@ const getMoviesAndUserWatchedMovies = async (req, res, next) => {
 const getMoviesAndUserWatchedMoviesByDate = async (req, res, next) => {
   const { date } = req.params;
   const userId = req.user.id;
-  const newDate = new Date(date);
+
   try {
+    const newDate = new Date(date);
+    const utcDate = new Date(date).toISOString().split("T")[0];
+
+    const startDate = new Date(utcDate);
+    startDate.setHours(0, 0, 0, 0);
+    const endDate = new Date(utcDate);
+    endDate.setDate(endDate.getDate() + 1);
+    endDate.setHours(0, 0, 0, 0);
+
     const moviesReleasedOnDate = await Movie.findAll({
       where: {
         releaseDate: newDate,
@@ -66,16 +75,8 @@ const getMoviesAndUserWatchedMoviesByDate = async (req, res, next) => {
       where: {
         UserId: userId,
         watchedAt: {
-          [Op.gte]: new Date(
-            newDate.getFullYear(),
-            newDate.getMonth(),
-            newDate.getDate()
-          ),
-          [Op.lt]: new Date(
-            newDate.getFullYear(),
-            newDate.getMonth(),
-            newDate.getDate() + 1
-          ),
+          [Op.gte]: startDate,
+          [Op.lt]: endDate,
         },
       },
       include: [
@@ -85,6 +86,7 @@ const getMoviesAndUserWatchedMoviesByDate = async (req, res, next) => {
         },
       ],
     });
+
     const userWatchedMoviesInDate = userWatchedMovies.map((movie) => ({
       id: movie.Movie.id,
       title: movie.Movie.title,
