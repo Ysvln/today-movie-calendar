@@ -11,6 +11,7 @@ dist-ssr
 .env.production.local
 .env
 nginx.conf
+nginx/
 
 .vscode/*
 !.vscode/extensions.json
