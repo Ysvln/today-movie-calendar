@@ -11,8 +11,8 @@ interface FallbackProps {
 }
 
 const ErrorFallback: FC<FallbackProps> = ({ error, reset }) => {
-  const err = error.response;
-  const status = err?.status;
+  const errorResult = error.response;
+  const status = errorResult?.status;
   const navigate = useNavigate();
   // 이런 식으로 에러 처리를 해주면, token의 isUser값을 체크 안 해줘도 되는지?
   const isNotAuthorized = status === 401;
