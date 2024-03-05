@@ -7,7 +7,14 @@ import router from "./routers";
 import Loading from "./components/Loading";
 
 function App() {
-  const queryClient = new QueryClient();
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        suspense: true,
+        useErrorBoundary: true,
+      },
+    },
+  });
   return (
     <QueryClientProvider client={queryClient}>
       <Suspense fallback={<Loading />}>
