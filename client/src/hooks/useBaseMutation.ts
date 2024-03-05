@@ -53,7 +53,6 @@ interface useBaseMutationType<T> {
   isShowBoundary: boolean;
   applyResult: boolean;
   gcTime: number;
-  itemId: string;
 }
 
 const useBaseMutation = <T>({
