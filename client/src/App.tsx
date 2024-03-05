@@ -1,10 +1,9 @@
-import { Suspense } from "react";
 import { RouterProvider } from "react-router-dom";
-// import { ErrorBoundary } from "react-error-boundary";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import router from "./routers";
 import Loading from "./components/Loading";
+import AsyncBoundary from "./components/AsyncBoundary";
 
 function App() {
   const queryClient = new QueryClient({
@@ -16,14 +15,12 @@ function App() {
     },
   });
   return (
-    <QueryClientProvider client={queryClient}>
-      <Suspense fallback={<Loading />}>
-        {/* <ErrorBoundary FallbackComponent={ErrorFallback}> */}
+    <AsyncBoundary suspenseFallback={<Loading />}>
+      <QueryClientProvider client={queryClient}>
         <RouterProvider router={router} />
         <ReactQueryDevtools />
-        {/* </ErrorBoundary> */}
-      </Suspense>
-    </QueryClientProvider>
+      </QueryClientProvider>
+    </AsyncBoundary>
   );
 }
 

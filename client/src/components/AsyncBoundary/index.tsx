@@ -1,30 +1,30 @@
 import { PropsWithChildren, ReactElement, Suspense, useCallback } from "react";
 import { useQueryErrorResetBoundary } from "@tanstack/react-query";
 import { ErrorBoundary } from "react-error-boundary";
+import ErrorFallback from "../ErrorFallback";
 
-interface Props {
+interface AsyncBoundaryProps {
   suspenseFallback: ReactElement;
-  errorFallback: ReactElement;
   children: ReactElement;
 }
 
 const AsyncBoundary = ({
   suspenseFallback,
-  errorFallback,
   children,
-}: PropsWithChildren<Props>) => {
+}: PropsWithChildren<AsyncBoundaryProps>) => {
   const { reset } = useQueryErrorResetBoundary();
   const resetHandler = useCallback(() => {
     reset();
   }, [reset]);
 
   return (
-    // resetKeys => 배열 안에 담긴 값이 바뀌면 ErrorBoundary로 잡힌 에러를 초기화
     <ErrorBoundary
-      resetKeys={[]}
       onReset={resetHandler}
-      fallback={errorFallback}
+      FallbackComponent={(props) => (
+        <ErrorFallback {...props} error={props.error} reset={reset} />
+      )}
     >
+      {/* data-fetching 하면서 생기는 loading 상태를 suspense로 관리 */}
       <Suspense fallback={suspenseFallback}>{children}</Suspense>
     </ErrorBoundary>
   );
