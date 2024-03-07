@@ -115,7 +115,7 @@ export const useFormValidation = <T extends Record<string, string>>(
   // 전체 폼을 제출할 때 호출
   const handleSubmit =
     (callback: () => void) => (e: FormEvent<HTMLFormElement>) => {
-      // e.preventDefault();
+      e.preventDefault();
       if (isFormValid()) {
         callback();
       }
