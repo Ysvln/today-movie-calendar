@@ -59,12 +59,10 @@ const patchReview = async (req, res, next) => {
       // 서버 시간 차이 수정하기
       const newWatchedAt = new Date(watchedAt);
       const watchedAtInDatabaseDate = new Date(review.watchedAt);
-      // 기존 관람일이 없거나 주어진 관람일이 기존 값과 다른 경우에만 15시간을 추가하여 저장
       if (
         !review.watchedAt ||
         newWatchedAt.getTime() !== watchedAtInDatabaseDate.getTime()
       ) {
-        newWatchedAt.setHours(newWatchedAt.getHours() + 15);
         review.watchedAt = newWatchedAt;
       }
     }
