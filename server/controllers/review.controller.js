@@ -10,7 +10,6 @@ const postReview = async (req, res, next) => {
     const { rating, content } = req.body;
 
     const watchedAt = new Date();
-    watchedAt.setHours(watchedAt.getHours() + 15);
 
     const existingReview = await Review.findOne({
       where: { UserId: userId, MovieId: movieId },
@@ -20,7 +19,7 @@ const postReview = async (req, res, next) => {
     }
 
     const review = await Review.create({
-      watchedAt: watchedAt.toISOString().slice(0, 19).replace("T", " "),
+      watchedAt,
       rating,
       content,
       UserId: userId,
@@ -59,6 +58,20 @@ const patchReview = async (req, res, next) => {
       // 서버 시간 차이 수정하기
       const newWatchedAt = new Date(watchedAt);
       const watchedAtInDatabaseDate = new Date(review.watchedAt);
+
+      console.log(
+        "newWatchedAt:",
+        newWatchedAt.getFullYear(),
+        newWatchedAt.getMonth() + 1,
+        newWatchedAt.getDate()
+      );
+      console.log(
+        "watchedAtInDatabaseDate:",
+        watchedAtInDatabaseDate.getFullYear(),
+        watchedAtInDatabaseDate.getMonth() + 1,
+        watchedAtInDatabaseDate.getDate()
+      );
+
       if (
         !review.watchedAt ||
         newWatchedAt.getTime() !== watchedAtInDatabaseDate.getTime()
