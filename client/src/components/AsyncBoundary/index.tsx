@@ -21,11 +21,7 @@ const AsyncBoundary = ({
     <ErrorBoundary
       onReset={resetHandler}
       FallbackComponent={(props) => (
-        <ErrorFallback
-          {...props}
-          error={props.error}
-          reset={props.resetErrorBoundary}
-        />
+        <ErrorFallback error={props.error} reset={props.resetErrorBoundary} />
       )}
     >
       {/* data-fetching 하면서 생기는 loading 상태를 suspense로 관리 */}
