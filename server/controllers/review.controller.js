@@ -59,19 +59,6 @@ const patchReview = async (req, res, next) => {
       const newWatchedAt = new Date(watchedAt);
       const watchedAtInDatabaseDate = new Date(review.watchedAt);
 
-      console.log(
-        "newWatchedAt:",
-        newWatchedAt.getFullYear(),
-        newWatchedAt.getMonth() + 1,
-        newWatchedAt.getDate()
-      );
-      console.log(
-        "watchedAtInDatabaseDate:",
-        watchedAtInDatabaseDate.getFullYear(),
-        watchedAtInDatabaseDate.getMonth() + 1,
-        watchedAtInDatabaseDate.getDate()
-      );
-
       if (
         !review.watchedAt ||
         newWatchedAt.getTime() !== watchedAtInDatabaseDate.getTime()
