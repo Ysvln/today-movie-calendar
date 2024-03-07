@@ -31,13 +31,13 @@ export const useFormValidation = <T extends Record<string, string>>(
 
     const result = patterns[name].test(inputValue);
     if (!result) {
-      const key = name.toLocaleUpperCase();
+      const key = name.toLocaleUpperCase() as keyof (typeof MESSAGE)["SYNTAX"];
       setError((prev) => ({
         ...prev,
         // key가 MESSAGE.SYNTAX 객체의 키 중 하나일 것이라 단언
         // MESSAGE.SYNTAX 객체의 특정 키에 해당하는 값을 설정
         // keyof : 키를 나타내는 유니온 타입 생성
-        [name]: MESSAGE.SYNTAX[key as keyof (typeof MESSAGE)["SYNTAX"]],
+        [name]: MESSAGE.SYNTAX[key],
         // key 변수를 객체 속성 이름으로 캐스팅. ==> key 가 실제로 MESSAGE 객체의 SYNTAX 속성의 유효한 키임을 알려줌
         // as const vs readonly
         // 1. 변수에 대한 해당 타입 추론 (or 값의 타입을 그대로 사용) => 객체나 배열 내 모든 속성 요소가 readonly / 값의 타입을 불변하게 유지

@@ -17,7 +17,7 @@
     margin-left: auto;
   }
 
-  &.disabled {
+  &:disabled {
     background-color: $gray-200;
     color: $gray-400;
     cursor: auto;
